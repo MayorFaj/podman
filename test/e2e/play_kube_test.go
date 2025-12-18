@@ -2107,7 +2107,7 @@ func withVolumeMount(mountPath, subpath string, readonly bool) ctrOption {
 	}
 }
 
-func withEnv(name, value, valueFrom, refName, refKey string, optional bool) ctrOption { //nolint:unparam
+func withEnv(name, value, valueFrom, refName, refKey string, optional bool) ctrOption {
 	return func(c *Ctr) {
 		e := Env{
 			Name:      name,
