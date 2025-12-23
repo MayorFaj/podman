@@ -599,7 +599,7 @@ t DELETE containers/$cid?v=true 204
 t POST containers/create \
   Image=$IMAGE \
   Cmd='["top"]' \
-  Healthcheck="{\"Test\":[\"CMD\",\"/usr/bin/test\",\"--arg=value with spaces\",\"another arg\"]}" \
+  Healthcheck='{"Test":["CMD","/usr/bin/test","--arg=value with spaces","another arg"]}' \
   201 \
   .Id~[0-9a-f]\\{64\\}
 cid=$(jq -r '.Id' <<<"$output")
