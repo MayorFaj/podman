@@ -3242,9 +3242,7 @@ var _ = Describe("Podman kube play", func() {
 		err = generateMultiDocKubeYaml(yamls, kubeYaml)
 		Expect(err).ToNot(HaveOccurred())
 
-		kube := podmanTest.Podman([]string{"kube", "play", kubeYaml})
-		kube.WaitWithDefaultTimeout()
-		Expect(kube).Should(ExitCleanly())
+		podmanTest.PodmanExitCleanly("kube", "play", kubeYaml)
 
 		inspect := podmanTest.Podman([]string{"inspect", getCtrNameInPod(pod), "--format", "'{{ .Config.Env }}'"})
 		inspect.WaitWithDefaultTimeout()
